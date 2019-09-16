@@ -7,15 +7,11 @@ class MyWebApp
     request  = Rack::Request.new(env)
     response = Rack::Response.new
 
-    if request.get? && request.path == "/people"
+    if request.request_method == "GET" && request.path == "/people"
       controller = PeopleController.new(self)
       controller.index(request, response)
 
-    elsif request.post? && request.path == "/people"
-      controller = PeopleController.new(self)
-      controller.search(request, response)
-
-    elsif request.get? && request.path == "/"
+    elsif request.request_method == "GET" && request.path == "/"
       controller = HomeController.new(self)
       controller.index(request, response)
 
