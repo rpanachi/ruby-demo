@@ -1,0 +1,6 @@
+<h1>People Database:</h1>
+<ul>
+  <% @people.each do |person| %>
+    <li><a href="/people/<%= person.id %>"><%= person.name %></a></li>
+  <% end %>
+</ul>
