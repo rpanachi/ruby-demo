@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     rack (2.0.7)
+    rake (12.3.3)
     sequel (5.24.0)
     sqlite3 (1.4.1)
 
@@ -10,6 +11,7 @@ PLATFORMS
 
 DEPENDENCIES
   rack (~> 2)
+  rake
   sequel (~> 5)
   sqlite3 (~> 1.4)
 
