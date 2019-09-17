@@ -1,0 +1,39 @@
+require "rake/testtask"
+
+desc "load app environment"
+task :environment do
+  require "./env"
+end
+
+namespace :db do
+  require "sequel"
+
+  task database: :environment do
+    require "./database"
+  end
+
+  desc "run database migration"
+  task migrate: :database do
+    Sequel::Migrator.run(DB, './db/migrations')
+
+    Rake::Task["db:version"].invoke
+  end
+
+  desc "check database version"
+  task version: :database do
+    version = DB[:schema_migrations].order(:filename).last
+    puts "Database version: #{version[:filename]}"
+  end
+
+  desc "load database with sample data"
+  task seed: :database do
+    load "./db/seed.rb"
+  end
+end
+
+Rake::TestTask.new do |task|
+  task.pattern = "test/*_test.rb"
+  task.warning = false
+end
+
+task default: :test

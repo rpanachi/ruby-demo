@@ -1,0 +1,26 @@
+desc "load app environment"
+task :environment do
+  require "./database"
+end
+
+namespace :db do
+  require "sequel"
+
+  desc "run database migration"
+  task migrate: :environment do
+    Sequel::Migrator.run(DB, './db/migrations')
+
+    Rake::Task["db:version"].invoke
+  end
+
+  desc "check database version"
+  task version: :environment do
+    version = DB[:schema_migrations].order(:filename).last
+    puts "Database version: #{version[:filename]}"
+  end
+
+  desc "load database with sample data"
+  task seed: :environment do
+    load "./db/seed.rb"
+  end
+end

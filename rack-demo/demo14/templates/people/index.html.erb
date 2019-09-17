@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1>People Database</h1>
+    <ul>
+      <% @people.each do |person| %>
+        <li><%= person.name %>, <%= person.age %></a></li>
+      <% end %>
+    </ul>
+    <form method="POST" action="/people">
+      <fieldset>
+        <legend>Create Person</legend>
+
+        <% unless @errors.nil? %>
+          <p>Check the following errors:</p>
+          <ul>
+            <% @errors.each do |error| %>
+              <li><%= error.to_s %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" placeholder="Name" value="<%= @person and @person.name %>" />
+        <br/>
+
+        <label for="age">Age</label>
+        <input id="age" type="text" name="age" placeholder="Age" value="<%= @person and @person.age %>" />
+        <br/>
+        <br/>
+
+        <input type="submit" value="Confirm">
+      </fieldset>
+    </form>
+  </body>
+</html>
