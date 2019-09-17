@@ -1,0 +1,22 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rack (2.0.7)
+    rake (12.3.3)
+    sequel (5.24.0)
+    shotgun (0.9.2)
+      rack (>= 1.0)
+    sqlite3 (1.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rack (~> 2)
+  rake
+  sequel (~> 5)
+  shotgun
+  sqlite3 (~> 1.4)
+
+BUNDLED WITH
+   1.17.2

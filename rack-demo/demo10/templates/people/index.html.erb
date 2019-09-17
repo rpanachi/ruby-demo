@@ -1,0 +1,24 @@
+<h1>People Database:</h1>
+<ul>
+  <% @people.each do |person| %>
+    <li><%= person.name %>, <%= person.age %></a></li>
+  <% end %>
+</ul>
+<hr/>
+<h1>Create Person:</h1>
+<form method="POST" action="/people">
+  <fieldset>
+    <legend>Person information:</legend>
+
+    <label for="name">Name: </label>
+    <input id="name" type="text" name="name" placeholder="Name" />
+    <br/>
+
+    <label for="age">Age: </label>
+    <input id="age" type="text" name="age" placeholder="Age" />
+    <br/>
+    <br/>
+
+    <input type="submit" value="Confirm">
+  </fieldset>
+</form>
