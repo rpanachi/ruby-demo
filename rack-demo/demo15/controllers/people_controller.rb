@@ -1,6 +1,6 @@
 require "./models/person"
 
-class PeopleController < ApplicationController
+class PeopleController < BaseController
   def index(request, response)
     @people = Person.all
 

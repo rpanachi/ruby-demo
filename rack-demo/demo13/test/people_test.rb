@@ -34,4 +34,14 @@ class PeopleTest < Test::Unit::TestCase
     person = Person.last
     assert person.name == "New Person"
   end
+
+  def test_validate_create_person
+    Person.dataset.delete
+
+    post '/people', {name: "Young Person", age: 10}, {}
+
+    person = Person.last
+    assert person.nil?
+    assert last_response.body.match(/is not > 18/)
+  end
 end

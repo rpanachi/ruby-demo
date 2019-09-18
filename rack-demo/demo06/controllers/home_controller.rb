@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomeController < BaseController
   def index(request, response)
     @current_time = Time.now
 

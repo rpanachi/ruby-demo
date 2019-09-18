@@ -7,7 +7,7 @@ DB.create_table(:people) do
   primary_key :id
   String      :name, size: 100
   Integer     :age
-end
+end unless DB.table_exists?(:people)
 
 people = DB[:people]
 people.insert(name: "Bob Smith", age: 30)

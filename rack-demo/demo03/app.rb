@@ -1,5 +1,9 @@
 class MyWebApp
   def self.call(env)
-    [200, {"Content-Type" => "text/html"}, ["Hello World!"]]
+    response = Rack::Response.new
+    response.status  = 200
+    response.headers["Content-Type"] = "text/html"
+    response.body = ["Hello World!"]
+    response.finish
   end
 end

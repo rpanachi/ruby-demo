@@ -2,17 +2,19 @@ require "./controllers/base_controller"
 require "./controllers/home_controller"
 require "./controllers/people_controller"
 
+require "./models/person"
+
 class MyWebApp
   def self.call(env)
     request  = Rack::Request.new(env)
     response = Rack::Response.new
 
     if request.request_method == "GET" && request.path == "/people"
-      controller = PeopleController.new(self)
+      controller = PeopleController.new
       controller.index(request, response)
 
     elsif request.request_method == "GET" && request.path == "/"
-      controller = HomeController.new(self)
+      controller = HomeController.new
       controller.index(request, response)
 
     else

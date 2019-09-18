@@ -4,7 +4,6 @@ gem "rack"
 gem "sequel"
 gem "sqlite3"
 gem "dotenv"
-gem "rack-contrib"
 
 group :development, :test do
   gem "rake"

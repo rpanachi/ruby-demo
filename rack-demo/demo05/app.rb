@@ -1,4 +1,3 @@
-require "./controllers/base_controller"
 require "./controllers/home_controller"
 
 class MyWebApp
@@ -7,9 +6,8 @@ class MyWebApp
     response = Rack::Response.new
 
     if request.get? && request.path == "/"
-      controller = HomeController.new(self)
+      controller = HomeController.new
       controller.index(request, response)
-
     else
       response.status = 404
       response.body = ["Not found"]

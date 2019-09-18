@@ -1,7 +1,4 @@
-class ApplicationController
-  def initialize(app)
-    @app = app
-  end
+class BaseController
   def render_html(file)
     content = File.read("./templates/#{file}.html.erb")
     [ERB.new(content).result(binding)]
